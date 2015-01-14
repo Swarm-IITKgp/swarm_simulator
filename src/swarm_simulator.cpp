@@ -2,11 +2,11 @@
 #include <math.h>
 #include "geometry_msgs/Twist.h"
 #include "std_msgs/String.h"
+#include "gazebo_msgs/ModelState.h"
+#include <gazebo_msgs/GetModelState.h>
+#include <stdio.h>
 
 
-/**
- * This tutorial demonstrates simple sending of velocity commands to the IRobot Create in Gazebo.
- */
 int main(int argc, char **argv)
 {
 
@@ -21,12 +21,19 @@ int main(int argc, char **argv)
   ros::Publisher vel_pub_4 = n.advertise<geometry_msgs::Twist>("/swarm_4/cmd_vel", 1);
   ros::Publisher vel_pub_5 = n.advertise<geometry_msgs::Twist>("/swarm_5/cmd_vel", 1);
 
+  ros::ServiceClient client = n.serviceClient<gazebo_msgs::GetModelState>("/gazebo/get_model_state"); 
+  gazebo_msgs::GetModelState getmodelstate;
+  getmodelstate.request.model_name="swarm_1";
+  
   ros::Rate loop_rate(5);
 
   int count = 0;
 
   while (ros::ok())
   {
+    if(client.call(getmodelstate))
+      std::cout << getmodelstate.response.pose << std::endl;
+
     geometry_msgs::Twist cmd_vel;
 
     cmd_vel.linear.x = 0.5;
@@ -43,12 +50,18 @@ int main(int argc, char **argv)
     vel_pub_3.publish(cmd_vel);
     vel_pub_4.publish(cmd_vel);
     vel_pub_5.publish(cmd_vel);
+
+    //ROS_INFO("%d",i);
+    
     ros::spinOnce();
 
     loop_rate.sleep();
 
+
     ++count;
-  }
+    }
+
+  //ros::spin();
 
   return 0;
 }
