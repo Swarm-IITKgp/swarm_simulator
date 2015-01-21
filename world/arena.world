@@ -1,4 +1,3 @@
-<?xml version="1.0" ?>
 <sdf version='1.4'>
   <world name='default'>
     <light name='sun' type='directional'>
@@ -488,132 +487,41 @@
       <pose>0 7 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>2028 769000000</sim_time>
-      <real_time>641 183159123</real_time>
-      <wall_time>1417528848 247990611</wall_time>
-      
-      <model name='swarm_0'>
-        <pose>-9.77805 -9.38462 0.000846 -0.000289 -0.001218 -1.45657</pose>
-        <link name='base'>
-          <pose>-9.77805 -9.38462 0.000846 -0.000289 -0.001218 -1.45657</pose>
-          <velocity>0.000561 -0.004211 -0.004871 0.009791 0.001549 -0.002469</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='left_wheel'>
-          <pose>-9.6489 -9.36975 0.032985 -3.14129 0.178587 1.68507</pose>
-          <velocity>0.000697 -0.004829 -0.020134 0.147829 0.015844 -0.002513</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='right_wheel'>
-          <pose>-9.9072 -9.39943 0.032988 -3.14075 -1.21341 1.68423</pose>
-          <velocity>0.000628 -0.004269 -0.015491 0.125102 0.013139 -0.002503</velocity>
+      <sim_time>2491 398000000</sim_time>
+      <real_time>381 62165252</real_time>
+      <wall_time>1421854603 833549903</wall_time>
+      <model name='bowl'>
+        <pose>-12 -11.4302 0.01749 0 3e-06 0</pose>
+        <link name='link'>
+          <pose>-12 -11.4302 0.01749 0 3e-06 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='swarm_1'>
-        <pose>-10.0192 -9.91004 0.000841 -0.000544 -0.001255 2.89873</pose>
-        <link name='base'>
-          <pose>-10.0192 -9.91004 0.000841 -0.000544 -0.001255 2.89873</pose>
-          <velocity>0.015721 -0.003959 -0.006666 0.004664 0.017139 0.020382</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='left_wheel'>
-          <pose>-10.0504 -10.0363 0.032986 -3.14104 0.117869 -0.242795</pose>
-          <velocity>0.018909 -0.004852 -0.024102 0.140017 0.56741 0.020709</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='right_wheel'>
-          <pose>-9.98787 -9.7839 0.032988 -0.000891 0.906789 2.89803</pose>
-          <velocity>0.013769 -0.00357 -0.020985 0.100625 0.409302 0.020621</velocity>
+      <model name='bowl_0'>
+        <pose>-9.45591 -8 0.017491 1e-06 -0 0</pose>
+        <link name='link'>
+          <pose>-9.45591 -8 0.017491 1e-06 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='swarm_2'>
-        <pose>-11.434 -9.13643 0.000804 -0.000198 -0.001698 -3.13891</pose>
-        <link name='base'>
-          <pose>-11.434 -9.13643 0.000804 -0.000198 -0.001698 -3.13891</pose>
-          <velocity>0.023395 -9e-06 -0.005132 0.001277 0.005059 0.024565</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='left_wheel'>
-          <pose>-11.4336 -9.26644 0.032984 -3.14138 0.30368 0.002749</pose>
-          <velocity>0.026813 -0.000103 -0.020099 -0.002565 0.803688 0.024729</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='right_wheel'>
-          <pose>-11.4343 -9.00644 0.032988 -3.14107 1.16946 0.003166</pose>
-          <velocity>0.020544 -0.000128 -0.016766 -0.001884 0.611059 0.02471</velocity>
+      <model name='bowl_1'>
+        <pose>10.5926 11 0.0175 1e-06 -3e-06 4.03897e-28</pose>
+        <link name='link'>
+          <pose>10.5926 11 0.0175 1e-06 -3e-06 4.03897e-28</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='swarm_3'>
-        <pose>-9.37847 -8.73709 0.000828 -0.000186 -0.001318 -2.07718</pose>
-        <link name='base'>
-          <pose>-9.37847 -8.73709 0.000828 -0.000186 -0.001318 -2.07718</pose>
-          <velocity>0.001924 0.004983 -0.000938 0.009206 0.025805 0.002071</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='left_wheel'>
-          <pose>-9.26476 -8.80011 0.032986 -3.14024 1.42707 1.06576</pose>
-          <velocity>0.003493 0.004694 -0.019649 -0.136311 0.104496 0.002097</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='right_wheel'>
-          <pose>-9.49212 -8.67399 0.033004 -3.14137 -0.53507 1.0643</pose>
-          <velocity>0.003315 0.004105 0.015664 -0.123521 0.100609 0.002096</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='swarm_4'>
-        <pose>-10.4156 -8.64742 0.000803 -0.000241 -0.001519 -0.773833</pose>
-        <link name='base'>
-          <pose>-10.4156 -8.64742 0.000803 -0.000241 -0.001519 -0.773833</pose>
-          <velocity>0.002047 -0.001009 0.000299 0.014703 -0.015556 0.001084</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='left_wheel'>
-          <pose>-10.3248 -8.55439 0.033005 -3.14134 0.075594 2.36778</pose>
-          <velocity>0.001008 -0.00186 0.019361 0.057022 0.030446 0.001067</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='right_wheel'>
-          <pose>-10.5065 -8.74036 0.032989 -3.14131 -0.493102 2.36763</pose>
-          <velocity>0.001219 -0.00205 -0.014798 0.063821 0.033435 0.001066</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='swarm_5'>
-        <pose>-8.54037 -9.15253 0.000845 -0.00037 -0.001355 2.95106</pose>
-        <link name='base'>
-          <pose>-8.54037 -9.15253 0.000845 -0.00037 -0.001355 2.95106</pose>
-          <velocity>-0.001061 0.000141 -0.005071 -0.000514 -0.009709 -0.030134</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='left_wheel'>
-          <pose>-8.56499 -9.28019 0.032984 -3.14092 -0.978896 -0.191094</pose>
-          <velocity>-0.005321 0.000879 -0.020058 -0.02849 -0.145867 -0.0302</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='right_wheel'>
-          <pose>-8.51576 -9.02489 0.032987 -0.004185 -1.4808 2.95523</pose>
-          <velocity>0.002259 -0.00063 -0.015816 0.015937 0.084042 -0.030122</velocity>
+      <model name='camera'>
+        <pose>-2.00051 1.99996 -9.94999 -4e-06 5.1e-05 0</pose>
+        <link name='link'>
+          <pose>-1.95 2.05 0.050003 -4e-06 5.1e-05 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
@@ -646,7 +554,7 @@
         </link>
       </model>
       <model name='grey_wall_10'>
-        <pose>-12.0217 -3.85294 -0 0 -0 1.56631</pose>
+        <pose>-12.0217 -3.85294 0 0 -0 1.56631</pose>
         <link name='link'>
           <pose>-12.0217 -3.85294 1.4 0 -0 1.56631</pose>
           <velocity>0 0 0 0 -0 0</velocity>
@@ -682,7 +590,7 @@
         </link>
       </model>
       <model name='grey_wall_5'>
-        <pose>10.5553 -7.39423 -0 0 0 -1.57076</pose>
+        <pose>10.5553 -7.39423 0 0 0 -1.57076</pose>
         <link name='link'>
           <pose>10.5553 -7.39423 1.4 0 0 -1.57076</pose>
           <velocity>0 0 0 0 -0 0</velocity>
@@ -700,7 +608,7 @@
         </link>
       </model>
       <model name='grey_wall_7'>
-        <pose>10.3574 7.30012 -0 -0.001078 -0.039101 1.59118</pose>
+        <pose>10.3574 7.30013 1e-06 -0.001078 -0.039101 1.59118</pose>
         <link name='link'>
           <pose>10.357 7.24538 1.39893 -0.001078 -0.039101 1.59118</pose>
           <velocity>0 0 0 0 -0 0</velocity>
@@ -861,6 +769,132 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
+      <model name='swarm_0'>
+        <pose>-4.3713 -10.9716 0.000855 -0.0005 -0.021929 -0.893516</pose>
+        <link name='base'>
+          <pose>-4.3713 -10.9716 0.000855 -0.0005 -0.021929 -0.893516</pose>
+          <velocity>-0.013174 0.004727 -0.002724 0.019004 0.010085 0.069568</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel'>
+          <pose>-4.27018 -10.8899 0.032999 -3.1411 -0.045969 2.24804</pose>
+          <velocity>-0.076341 0.075744 -0.012153 -0.451756 0.980558 -3.07239</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel'>
+          <pose>-4.47275 -11.0529 0.03299 -0.00077 0.867459 -0.894116</pose>
+          <velocity>-0.084656 0.085799 -0.017336 0.672019 0.079819 -3.07408</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='swarm_1'>
+        <pose>-34.4508 8.13013 0.000859 7.3e-05 -0.001169 1.84893</pose>
+        <link name='base'>
+          <pose>-34.4508 8.13013 0.000859 7.3e-05 -0.001169 1.84893</pose>
+          <velocity>-0.037787 0.129823 0.000327 -0.008279 0.019631 0.024607</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel'>
+          <pose>-34.5757 8.0942 0.033008 3.10835 1.56889 -1.32591</pose>
+          <velocity>-0.030649 0.109617 0.018198 2.96732 -0.926544 0.024476</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel'>
+          <pose>-34.3258 8.16586 0.032993 3.14142 -1.17167 -1.2925</pose>
+          <velocity>-0.03232 0.115465 -0.014618 1.59233 -1.31635 0.024524</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='swarm_2'>
+        <pose>-38.1322 5.32995 0.000827 -0.000212 -0.001332 1.97634</pose>
+        <link name='base'>
+          <pose>-38.1322 5.32995 0.000827 -0.000212 -0.001332 1.97634</pose>
+          <velocity>-0.053897 0.127072 -0.001412 0.019478 -0.017771 0.024951</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel'>
+          <pose>-38.2516 5.27853 0.032986 -3.01243 1.56909 -1.0361</pose>
+          <velocity>-0.061329 0.140886 -0.01972 -3.13204 -1.36885 0.02456</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel'>
+          <pose>-38.0128 5.3813 0.033005 -3.14103 -1.16948 -1.16577</pose>
+          <velocity>-0.063548 0.145951 0.01585 -1.30259 -1.20613 -3.11731</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='swarm_3'>
+        <pose>-4.10465 -11.3987 0.000865 -6.6e-05 -0.022008 2.26591</pose>
+        <link name='base'>
+          <pose>-4.10465 -11.3987 0.000865 -6.6e-05 -0.022008 2.26591</pose>
+          <velocity>0.004864 0.015589 0.000138 -0.008059 0.011324 0.116235</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel'>
+          <pose>-4.2044 -11.4822 0.033004 -3.14111 1.46629 -0.875201</pose>
+          <velocity>-0.067553 0.082437 0.012861 0.549088 -1.00208 -3.0239</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel'>
+          <pose>-4.0048 -11.3156 0.032992 -3.14154 -0.500872 -0.875703</pose>
+          <velocity>0.101255 -0.074598 -0.011673 -0.603905 -0.030799 -3.02785</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='swarm_4'>
+        <pose>10.327 -10.9801 0.000896 9.8e-05 -0.022428 -0.863027</pose>
+        <link name='base'>
+          <pose>10.327 -10.9801 0.000896 9.8e-05 -0.022428 -0.863027</pose>
+          <velocity>-0.003955 -0.00458 -0.02165 -0.013273 -0.025991 0.004906</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel'>
+          <pose>10.4252 -10.895 0.032972 0.000147 0.809096 -0.862919</pose>
+          <velocity>0.003436 0.007057 -0.035122 -0.549783 0.937458 -3.13603</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel'>
+          <pose>10.2279 -11.0641 0.03302 9.8e-05 -0.346766 -0.863055</pose>
+          <velocity>-0.023384 -0.012786 -0.056469 0.546049 0.002922 -3.1369</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='swarm_5'>
+        <pose>-34.4589 6.45574 0.000862 -0.000208 -0.001725 1.9107</pose>
+        <link name='base'>
+          <pose>-34.4589 6.45574 0.000862 -0.000208 -0.001725 1.9107</pose>
+          <velocity>-0.045528 0.128672 0.004435 -0.002408 -0.004609 0.026947</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='left_wheel'>
+          <pose>-34.5814 6.41217 0.033004 -0.01648 1.55766 1.89422</pose>
+          <velocity>-0.038123 0.107311 0.017475 3.03724 -1.15314 0.025918</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_wheel'>
+          <pose>-34.3364 6.49916 0.033004 -3.14104 -1.1666 -1.2314</pose>
+          <velocity>-0.053367 0.150412 0.015498 -1.44012 -1.51601 -3.1154</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
       <model name='unit_box_1'>
         <pose>-4.44831 1.44204 0.5 0 -0 0</pose>
         <link name='link'>
@@ -880,27 +914,27 @@
         </link>
       </model>
       <model name='unit_cylinder_1'>
-        <pose>-7.45274 -5.51884 0.499992 -1e-06 1e-06 0</pose>
+        <pose>-7.45274 -5.51884 0.499995 0 -0 0</pose>
         <link name='link'>
-          <pose>-7.45274 -5.51884 0.499992 -1e-06 1e-06 0</pose>
+          <pose>-7.45274 -5.51884 0.499995 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='unit_cylinder_2'>
-        <pose>0.46531 -4.53037 0.499998 1e-06 -1e-06 0</pose>
+        <pose>0.46531 -4.53037 0.499996 1e-06 -1e-06 0</pose>
         <link name='link'>
-          <pose>0.46531 -4.53037 0.499998 1e-06 -1e-06 0</pose>
+          <pose>0.46531 -4.53037 0.499996 1e-06 -1e-06 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
       <model name='unit_cylinder_3'>
-        <pose>0.513286 5.45542 0.499999 0 -1e-06 0</pose>
+        <pose>0.513287 5.45542 0.499998 1e-06 -0 0</pose>
         <link name='link'>
-          <pose>0.513286 5.45542 0.499999 0 -1e-06 0</pose>
+          <pose>0.513287 5.45542 0.499998 1e-06 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -1063,7 +1097,6 @@
       </link>
       <pose>-9.59515 -8 0 0 -0 0</pose>
     </model>
-    
     <model name='nist_maze_wall_120'>
       <static>1</static>
       <link name='nist_maze_wall_120_link'>
@@ -1961,18 +1994,18 @@
       </joint>
       <pose>-10 -9 0 0 -0 0</pose>
       <static>0</static>
-      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>left_wheel</leftJoint>
-      <rightJoint>right_wheel</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.2410</wheelDiameter>
-      <torque>20</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <leftJoint>left_wheel</leftJoint>
+        <rightJoint>right_wheel</rightJoint>
+        <wheelSeparation>0.5380</wheelSeparation>
+        <wheelDiameter>0.2410</wheelDiameter>
+        <torque>20</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
     </model>
     <model name='swarm_1'>
@@ -2312,18 +2345,18 @@
       </joint>
       <pose>-10 -8.55237 0 0 -0 0</pose>
       <static>0</static>
-      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>left_wheel</leftJoint>
-      <rightJoint>right_wheel</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.2410</wheelDiameter>
-      <torque>20</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <leftJoint>left_wheel</leftJoint>
+        <rightJoint>right_wheel</rightJoint>
+        <wheelSeparation>0.5380</wheelSeparation>
+        <wheelDiameter>0.2410</wheelDiameter>
+        <torque>20</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
     </model>
     <model name='swarm_2'>
@@ -2663,18 +2696,18 @@
       </joint>
       <pose>-11 -9.44492 0 0 -0 0</pose>
       <static>0</static>
-      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>left_wheel</leftJoint>
-      <rightJoint>right_wheel</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.2410</wheelDiameter>
-      <torque>20</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <leftJoint>left_wheel</leftJoint>
+        <rightJoint>right_wheel</rightJoint>
+        <wheelSeparation>0.5380</wheelSeparation>
+        <wheelDiameter>0.2410</wheelDiameter>
+        <torque>20</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
     </model>
     <model name='swarm_3'>
@@ -3014,18 +3047,18 @@
       </joint>
       <pose>-11 -9 0 0 -0 0</pose>
       <static>0</static>
-      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>left_wheel</leftJoint>
-      <rightJoint>right_wheel</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.2410</wheelDiameter>
-      <torque>20</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <leftJoint>left_wheel</leftJoint>
+        <rightJoint>right_wheel</rightJoint>
+        <wheelSeparation>0.5380</wheelSeparation>
+        <wheelDiameter>0.2410</wheelDiameter>
+        <torque>20</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
     </model>
     <model name='swarm_4'>
@@ -3365,18 +3398,18 @@
       </joint>
       <pose>-11 -8.50729 0 0 -0 0</pose>
       <static>0</static>
-      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>left_wheel</leftJoint>
-      <rightJoint>right_wheel</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.2410</wheelDiameter>
-      <torque>20</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <leftJoint>left_wheel</leftJoint>
+        <rightJoint>right_wheel</rightJoint>
+        <wheelSeparation>0.5380</wheelSeparation>
+        <wheelDiameter>0.2410</wheelDiameter>
+        <torque>20</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
     </model>
     <model name='swarm_5'>
@@ -3716,18 +3749,18 @@
       </joint>
       <pose>-10 -9.43812 0 0 -0 0</pose>
       <static>0</static>
-      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <alwaysOn>true</alwaysOn>
-      <updateRate>10</updateRate>
-      <leftJoint>left_wheel</leftJoint>
-      <rightJoint>right_wheel</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.2410</wheelDiameter>
-      <torque>20</torque>
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <plugin name='differential_drive_controller' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>10</updateRate>
+        <leftJoint>left_wheel</leftJoint>
+        <rightJoint>right_wheel</rightJoint>
+        <wheelSeparation>0.5380</wheelSeparation>
+        <wheelDiameter>0.2410</wheelDiameter>
+        <torque>20</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
     </model>
     <model name='unit_box_1'>
@@ -4116,7 +4149,7 @@
     </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>4.28769 -19.636 64.5563 0 1.2218 1.67168</pose>
+        <pose>21.4649 -0.478822 32.6982 0 1.2218 1.67168</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
@@ -4127,5 +4160,217 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
+    <model name='camera'>
+      <link name='link'>
+        <pose>0.05 0.05 10 0 -0 0</pose>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+        </visual>
+        <sensor name='camera' type='camera'>
+          <camera name='__default__'>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>1</visualize>
+        </sensor>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>0</gravity>
+      </link>
+      <pose>-2 2 10 0 -0 0</pose>
+      <static>0</static>
+    </model>
+    <model name='bowl'>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.098</radius>
+              <length>0.035</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://bowl/meshes/bowl.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>-12 -11.4302 0 0 -0 0</pose>
+      <static>0</static>
+    </model>
+    <model name='bowl_0'>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.098</radius>
+              <length>0.035</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://bowl/meshes/bowl.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>-9.45591 -8 0 0 -0 0</pose>
+      <static>0</static>
+    </model>
+    <model name='bowl_1'>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.098</radius>
+              <length>0.035</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://bowl/meshes/bowl.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose>10.5926 11 0 0 -0 0</pose>
+      <static>0</static>
+    </model>
   </world>
 </sdf>
