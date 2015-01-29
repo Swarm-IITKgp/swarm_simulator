@@ -4,15 +4,18 @@
 #include "std_msgs/String.h"
 #include "gazebo_msgs/ModelState.h"
 #include <gazebo_msgs/GetModelState.h>
+
+#include <gazebo_msgs/GetWorldProperties.h>
 #include <stdio.h>
 #include <string.h>
 
+#define print(a) std::cout << a << std::endl;
 
 typedef struct param{
   double x;
   double y;
   int shape;
-};
+}param;
 
 int main(int argc, char **argv)
 {
@@ -21,23 +24,25 @@ int main(int argc, char **argv)
 
   ros::NodeHandle n;
 
-  ros::Publisher vel_pub_0 = n.advertise<geometry_msgs::Twist>("/swarm_0/cmd_vel", 1);
-  ros::Publisher vel_pub_1 = n.advertise<geometry_msgs::Twist>("/swarm_1/cmd_vel", 1);
-  ros::Publisher vel_pub_2 = n.advertise<geometry_msgs::Twist>("/swarm_2/cmd_vel", 1);
-  ros::Publisher vel_pub_3 = n.advertise<geometry_msgs::Twist>("/swarm_3/cmd_vel", 1);
-  ros::Publisher vel_pub_4 = n.advertise<geometry_msgs::Twist>("/swarm_4/cmd_vel", 1);
-  ros::Publisher vel_pub_5 = n.advertise<geometry_msgs::Twist>("/swarm_5/cmd_vel", 1);
-  ros::ServiceClient client = n.serviceClient<gazebo_msgs::GetModelState>("/gazebo/get_model_state"); 
+  ros::Publisher vel_pub_0 = n.advertise<geometry_msgs::Twist>("/swarmbot0/cmd_vel", 1);
+  ros::Publisher vel_pub_1 = n.advertise<geometry_msgs::Twist>("/swarmbot1/cmd_vel", 1);
+  ros::Publisher vel_pub_2 = n.advertise<geometry_msgs::Twist>("/swarmbot2/cmd_vel", 1);
+  ros::Publisher vel_pub_3 = n.advertise<geometry_msgs::Twist>("/swarmbot3/cmd_vel", 1);
+  ros::ServiceClient client = n.serviceClient<gazebo_msgs::GetWorldProperties>("/gazebo/get_world_properties"); 
+  gazebo_msgs::GetWorldProperties prop;
+  std::vector<std::string> s;
+  if(client.call(prop))
+    s=prop.response.model_names;
+    //  ROS_INFO("List :%d", (prop.response.model_names.size()));
+  //std::cout << "here:";
+
+  ros::ServiceClient clien = n.serviceClient<gazebo_msgs::GetModelState>("/gazebo/get_model_state"); 
   gazebo_msgs::GetModelState getmodelstate;
   gazebo_msgs::ModelState modelstate;
-  std::string s[] ={"grey_wall", "grey_wall_0" ,"grey_wall_1", "grey_wall_2", "grey_wall_3", "grey_wall_4", "grey_wall_5", "grey_wall_6", "grey_wall_7", "grey_wall_8", "grey_wall_9", 
-                  "grey_wall_10", "nist_maze_wall_120" , "nist_maze_wall_120_1" , "nist_maze_wall_120_2" , "nist_maze_wall_120_3" , "nist_maze_wall_120_4" , "nist_maze_wall_120_5"
-                  , "nist_maze_wall_120_6", "nist_maze_wall_120_7" , "nist_maze_wall_120_8" , "nist_maze_wall_120_9" , "nist_maze_wall_120_10" , "nist_maze_wall_120_11"
-                  , "nist_maze_wall_120_12" , "unit_sphere_1", "unit_sphere_2", "unit_box_1", "unit_box_2", "unit_cylinder_1", "unit_cylinder_2" , "unit_cylinder_3", "swarm_0", "swarm_5",
-                  "swarm_4", "swarm_3", "swarm_1", "swarm_2" };
                   
   ros::Rate loop_rate(5);
   int **img;
+ // std::cout << "here";
   img=(int **)malloc(sizeof(int *)*2400);
   for(int i=0;i<2400;i++){
     img[i] =(int *)malloc(sizeof(int)*2400);
@@ -45,29 +50,40 @@ int main(int argc, char **argv)
       img[i][j]=0;
   }
 
-  int count = 0;
-  int s_l=0;
-  int i=0;
+ // std::string s[]={"unit_cylinder_1", "unit_cylinder_2"};
 
-  while(!s[s_l].empty())
-    s_l++;
+  int count = 0;
+  int s_l=s.size();
+  int i=0;
 
   while (ros::ok())
   {
    i=0;
    std::vector<param> obs;
-  while(i++ < s_l){
-    std::cout << i << std::endl;
+    while(i < s_l){
+    std::cout << s[i] << std::endl;
     getmodelstate.request.model_name=s[i];
   
-    if(client.call(getmodelstate)){
-      std::cout << getmodelstate.response.pose << std::endl;
+    if(clien.call(getmodelstate)){
+    //  std::cout << getmodelstate.response.pose << std::endl;
       param toAdd;
       toAdd.x=getmodelstate.response.pose.position.x;
       toAdd.y=getmodelstate.response.pose.position.y;
-      obs.push_back(toAdd);
-      //now color for respective shape  
+      if(s[i].find("cylinder")==-1){
+        toAdd.shape=0;
+        obs.push_back(toAdd);
+      }
+      else if(s[i].find("box")==-1){
+        toAdd.shape=1;
+        obs.push_back(toAdd);
+      }
+      else if(s[i].find("sphere")==-1){
+        toAdd.shape=2;
+        obs.push_back(toAdd);
+      }
     }
+    i++;
+
     geometry_msgs::Twist cmd_vel;
 
     cmd_vel.linear.x = 0.5;
@@ -82,8 +98,6 @@ int main(int argc, char **argv)
     vel_pub_1.publish(cmd_vel);
     vel_pub_2.publish(cmd_vel);
     vel_pub_3.publish(cmd_vel);
-    vel_pub_4.publish(cmd_vel);
-    vel_pub_5.publish(cmd_vel);
 
     //ROS_INFO("%d",i);
     
@@ -96,7 +110,5 @@ int main(int argc, char **argv)
     }
     
   }
-  //ros::spin();
-
   return 0;
-}
+} 
