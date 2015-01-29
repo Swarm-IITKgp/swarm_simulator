@@ -6,25 +6,25 @@
   <group ns="robot0">
     <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
       <arg name="robot_name" value="swarmbot0"/>
-      <arg name="init_pose" value="-x 2 -y -2 -z 0"/>
+      <arg name="init_pose" value="-x -12 -y -12 -z 0"/>
     </include>
   </group>
   <group ns="robot1">
     <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
       <arg name="robot_name" value="swarmbot1"/>
-      <arg name="init_pose" value="-x 2 -y 2 -z 0"/>
+      <arg name="init_pose" value="-x -12.5 -y -12 -z 0"/>
     </include>
   </group>
   <group ns="robot2">
     <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
       <arg name="robot_name" value="swarmbot2"/>
-      <arg name="init_pose" value="-x -2 -y -2 -z 0"/>
+      <arg name="init_pose" value="-x -12 -y -12.5 -z 0"/>
     </include>
   </group>
   <group ns="robot3">
     <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
       <arg name="robot_name" value="swarmbot3"/>
-      <arg name="init_pose" value="-x -2 -y 2 -z 0"/>
+      <arg name="init_pose" value="-x -12.5 -y -12.5 -z 0"/>
     </include>
   </group>
 </launch>
