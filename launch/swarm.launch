@@ -3,4 +3,28 @@
     <arg name="world_name" value="$(find swarm_simulator)/world/arena.world"/>      
     <arg name="gui" value="true"/>    
   </include>  
+  <group ns="robot0">
+    <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
+      <arg name="robot_name" value="swarmbot0"/>
+      <arg name="init_pose" value="-x 2 -y -2 -z 0"/>
+    </include>
+  </group>
+  <group ns="robot1">
+    <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
+      <arg name="robot_name" value="swarmbot1"/>
+      <arg name="init_pose" value="-x 2 -y 2 -z 0"/>
+    </include>
+  </group>
+  <group ns="robot2">
+    <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
+      <arg name="robot_name" value="swarmbot2"/>
+      <arg name="init_pose" value="-x -2 -y -2 -z 0"/>
+    </include>
+  </group>
+  <group ns="robot3">
+    <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
+      <arg name="robot_name" value="swarmbot3"/>
+      <arg name="init_pose" value="-x -2 -y 2 -z 0"/>
+    </include>
+  </group>
 </launch>
