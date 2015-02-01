@@ -1,1 +1,0 @@
-obstacleData[] obstacles
