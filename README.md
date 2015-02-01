@@ -1,4 +1,4 @@
-swarm_simulator
+swarm-gazebo-simulator
 ======================
 
 This is the simulator for the Swarm Robtics project at IIT Kharagpur.
