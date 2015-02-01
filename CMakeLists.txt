@@ -7,6 +7,8 @@ project(swarm_simulator)
 find_package(catkin REQUIRED COMPONENTS
   gazebo_ros
   roscpp
+  std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -42,11 +44,11 @@ include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  obstacleData.msg
+  obstacleList.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -63,10 +65,10 @@ include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -81,7 +83,7 @@ include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES gazebo_simple
-   CATKIN_DEPENDS gazebo_ros roscpp
+   CATKIN_DEPENDS message_runtime gazebo_ros roscpp
 #  DEPENDS system_lib
 )
 
@@ -93,9 +95,8 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
+include_directories(include ${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
+
 
 set(SWARM_SIMU
 	src/swarm_simulator.cpp
