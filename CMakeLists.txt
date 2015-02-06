@@ -108,7 +108,7 @@ set(SINGLE_BOT
 
 ## Declare a cpp executable
 add_executable(swarm_simulator_node ${SWARM_SIMU})
-
+add_dependencies(swarm_simulator_node ${PROJECT_NAME}_generate_messages_cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(swarm_simulator_node  ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
