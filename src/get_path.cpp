@@ -12,8 +12,8 @@
 #define gridy2 12
 #define maxx 100
 #define maxy 100
-#define thres 0.1
-// struct for a point in path
+#define thres 0.010
+#define pi 3.14
 typedef struct _pix
 {
 double x;
@@ -39,6 +39,10 @@ return ((lhs.x==rhs.x)&&(lhs.y==rhs.y));
 bool operator!=(const pix& lhs, const pix& rhs)
 {
 return ((lhs.x!=rhs.x)||(lhs.y!=rhs.y));
+}
+double normalizeangle(double theta)
+{
+return (theta-2*pi*floor((theta+pi)/(2*pi)));
 }
 /*struct op
 {
@@ -72,9 +76,7 @@ return 0;
 }
 return 1;
 }
-
-// Function for creating sequence from obstacle list
-std::list<pix > create(const std::vector<swarm_simulator::obstacleData > & obs,pix start, pix fin)
+std::vector<pix > create(const std::vector<swarm_simulator::obstacleData > & obs,pix start, pix fin)
 {
 int i,j,k,l;
 double temp,t2;
@@ -145,24 +147,25 @@ temppix=parent[temppix.x][temppix.y];
 return sequence;
 }
 
-// reducing no. of pionts in sequence
-std::vector<pix>reduce(vector<pix> s)
+// reducing no of pionts in sequence
+std::vector<pix> reduce(std::vector<pix>s)
 {
 int i=0,j;
 double ori, orin;
 pix temppix;
 std::vector<pix> shortseq;
-ori = (s[i+1].y-s[i].y)/(s[i+1].x-s[i].x);
-for(i=1,j=0;i<=s.size();i++)
+ori = normalizeangle(atan2((s[i+1].y-s[i].y),(s[i+1].x-s[i].x)));
+for(i=1,j=0;i<s.size();i++)
 {
-orin = (s[i].y-s[j].y)/(s[i].x-s[j].x);
-//if there is a big change in orientation then keep that point
-if ((orin-ori)>=thres|| (ori-orin)>=thres)
+orin =normalizeangle(atan2( (s[i+1].y-s[i].y),(s[i+1].x-s[i].x)));
+ROS_INFO("orin= %lf,ori= %lf", orin, ori);
+if (((orin-ori)>=thres)||( (orin-ori)<=-1*thres))
 {
+ROS_INFO("orin= %lf,ori= %lf", orin, ori);
 temppix.x=s[i].x;
 temppix.y=s[i].y;
 shortseq.push_back(temppix);
-j=i;
+ori=orin;
 }
 }
 return shortseq ;
@@ -173,25 +176,21 @@ int main(int argc, char **argv)
 ros::init(argc, argv, "Bullshit");
 //FILE *file;
 //file=fopen("temp.txt","w");
-std::list<pix> sequence;
-pix start={1,1},fin={100,100};
-// hardcoded obstacle list 
 std::vector<swarm_simulator::obstacleData > x(3);
-
-x[0].x=40;
-x[0].y=40;
+std::vector<pix> sequence;
+pix start={1,1},fin={100,100};
+x[0].x=50;
+x[0].y=50;
 x[0].radius=5;
 x[1].x=60;
 x[1].y=13;
-x[1].radius=7;
+x[1].radius=3;
 x[2].x=70;
 x[2].y=90;
 x[2].radius=5;
-// sequence created from A*
 sequence=create(x,start,fin);
-// reduced sequence 
 sequence=reduce(sequence);
-for(std::list<pix>::iterator it=sequence.begin();it!=sequence.end();it++)
+for(std::vector<pix>::iterator it=sequence.begin();it!=sequence.end();it++)
 {
 ROS_INFO("%lf\t%lf",(*it).x,(*it).y);
 //printf("%lf %lf\n",(*it).x,(*it).y);
