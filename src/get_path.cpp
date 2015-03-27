@@ -156,11 +156,13 @@ ori = (s[i+1].y-s[i].y)/(s[i+1].x-s[i].x);
 for(i=1,j=0;i<=s.size();i++)
 {
 orin = (s[i].y-s[j].y)/(s[i].x-s[j].x);
+//if there is a big change in orientation then keep that point
 if ((orin-ori)>=thres|| (ori-orin)>=thres)
 {
 temppix.x=s[i].x;
 temppix.y=s[i].y;
 shortseq.push_back(temppix);
+j=i;
 }
 }
 return shortseq ;
