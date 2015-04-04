@@ -48,6 +48,7 @@ add_message_files(
   FILES
   obstacleData.msg
   obstacleList.msg
+  polarCoordinates.msg
 )
 
 ## Generate services in the 'srv' folder
