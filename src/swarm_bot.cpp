@@ -20,11 +20,15 @@ typedef typename geometry_msgs::Twist Twist;
 
 Pose current_pos; // global updated by callback function
 std::vector<swarm_simulator::obstacleData> obstacles; // global updated by callback function
+bool new_obstacles = false;
+bool pos_updated = false;
+
+const int id = 0;
 
 // the arena on the simulator stretches from (-X_MAX/2, -Y_MAX/2) to (X_MAX/2, Y_MAX/2) 
 const int X_MAX = 20;
 const int Y_MAX = 20;
-const int SCALE = 2; // Each cell of map[][] covers 1/SCALE on simulator
+const int SCALE = 1; // Each cell of map[][] covers 1/SCALE on simulator
 // hence higher the scale, more refined the path generated.
 const double TOL = 1 / double(SCALE);
 
@@ -34,15 +38,47 @@ int map[X_MAX * SCALE][Y_MAX * SCALE];
 //          = 2 if in path
 //          = 3 if in frontier considered by A*
 
+
+
+
+void odomCB(const Odom& msg) {
+
+  std::cout << "OdomCB called" << std::endl;
+  current_pos = msg.pose.pose;
+
+  pos_updated = true;
+
+  std::cout << "CB_current_pos = " << current_pos.position.x << ", " << current_pos.position.y << std::endl;
+}
+
+
+
+void obstacleCB(const swarm_simulator::obstacleList msg) {
+  std::cout << "msg.obstacles.size() = " << msg.obstacles.size() << std::endl;
+
+  new_obstacles = true;
+
+
+  obstacles.clear();
+  for(int i = 0; i<msg.obstacles.size(); ++i){
+    if((msg.obstacles[i].radius > 1.4 && msg.obstacles[i].radius < 1.6) && msg.obstacles[i].shape==id) {
+    }
+    else {
+      obstacles.push_back(msg.obstacles[i]);
+    }
+  }
+
+  std::cout << "obstacles.size() = " << obstacles.size() << std::endl;
+}
+
+
+
+
 ////////////////////
 // Motion Control //
 ////////////////////
 
 void calculate_u_omega(Pose current_, Pose destination_, Twist& cmd_vel);
-
-void odomCB(const Odom& msg) {
-  current_pos = msg.pose.pose;
-}
 
 double normalizeAngle(double angle) {
   angle = fmod(angle, 2*M_PI); // (0, 2PI)
@@ -93,11 +129,6 @@ void calculate_u_omega(Pose current_, Pose destination_, Twist& cmd_vel) {
 /////////////////////////////
 // Path Planning (with A*) //
 /////////////////////////////
-
-void obstacleCB(const swarm_simulator::obstacleList msg) {
-  if(obstacles.empty())
-    obstacles = msg.obstacles;
-}
 
 // fills the 2D array with the obstacles
 void fillMap(std::vector<swarm_simulator::obstacleData> obstacles) {
@@ -285,7 +316,6 @@ int main(int argc, char **argv)
   cmd_vel.linear.x = 0;
   cmd_vel.angular.z = cmd_vel.angular.y = cmd_vel.angular.x = cmd_vel.linear.y = cmd_vel.linear.z = 0;
 
-  bool found_path = false;
   std::vector<Point> path;
 
 
@@ -293,42 +323,75 @@ int main(int argc, char **argv)
   {
     ros::spinOnce();
 
-    while(obstacles.empty()) {
+    while(obstacles.empty() || !pos_updated) {
       std::cout << "Waiting for obstacle list" <<  std::endl;
       ros::spinOnce();
       loop_rate.sleep();
     }
 
-    fillMap(obstacles);
+    //std::cout << "Out of loop" << std::endl;
+
+    if(new_obstacles == true) { //obstacles updated, find new path
+      fillMap(obstacles);
 
 
-    if (!found_path) {
-      path = AStar(Point(0, 0), Point(38, 38));
+      //printMap();
+
+
+
+
+      long current_x = std::lround((current_pos.position.x + X_MAX / 2) * SCALE);
+      long current_y = std::lround((current_pos.position.y + Y_MAX / 2) * SCALE);
+
+      std::cout << "simu_current_pos = " << current_pos.position.x << ", " << current_pos.position.y << std::endl;
+      std::cout << "map_current_pos = " << current_x << ", " << current_y << std::endl;
+
+      if(current_x < 0) current_x = 0;
+      if(current_y < 0) current_y = 0;
+      if(current_x >= X_MAX * SCALE) current_x = X_MAX * SCALE - 1;
+      if(current_y >= Y_MAX * SCALE) current_y = Y_MAX * SCALE - 1;
+
+      path = AStar(Point(current_x, current_y), Point(X_MAX * SCALE - 1, Y_MAX * SCALE - 1));
+
       printMap();
-      found_path = true;
+
+      new_obstacles = false;
+
     }
+
+    
+
+    // if (!found_path) {
+    //   path = AStar(Point(0, 0), Point(38, 38));
+    //   printMap();
+    //   found_path = true;
+    // }
 
     // std::cout << "destination = " << destination.position.x << ", " << destination.position.y << std::endl; 
     // std::cout << "current_pos = " << current_pos.position.x << ", " << current_pos.position.y << std::endl;
     // std::cout << "path.size() = " << path.size() << std::endl;
 
     if (!path.empty()) {
-      if (current_pos.position.x > destination.position.x - TOL
-        && current_pos.position.x < destination.position.x + TOL
-        && current_pos.position.y > destination.position.y - TOL
-        && current_pos.position.y < destination.position.y + TOL) {
+      if(current_pos.position.x > destination.position.x - TOL &&
+       current_pos.position.x < destination.position.x + TOL &&
+       current_pos.position.y > destination.position.y - TOL &&
+       current_pos.position.y < destination.position.y + TOL) {
 
-        Point target = path.back();
-      path.pop_back();
+
+        path.pop_back();
+      Point target = path.back();
       destination.position.x = (target.first / SCALE) - (X_MAX / 2);
       destination.position.y = (target.second / SCALE) - (Y_MAX / 2);
 
-        if(!path.empty()) {
-          Point next = path.back();
-          double angle = normalizeAngle(atan2(next.second - target.second, next.first - target.first));
-          destination.orientation.z = sin(angle/2);
-          destination.orientation.w = cos(angle/2);
-      }
+      std::cout << "simu_next_pos = " << destination.position.x << ", " << destination.position.y << std::endl;
+      std::cout << "map_next_pos = " << target.first << ", " << target.second << std::endl;
+
+      // if(!path.empty()) {
+      //   Point next = path.back();
+      //   double angle = normalizeAngle(atan2(next.second - target.second, next.first - target.first));
+      //   destination.orientation.z = sin(angle/2);
+      //   destination.orientation.w = cos(angle/2);
+      // }
     }
   }
 
