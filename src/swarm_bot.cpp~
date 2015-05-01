@@ -25,7 +25,7 @@ std::vector<swarm_simulator::obstacleData> obstacles; // global updated by callb
 bool new_obstacles = false;
 bool pos_updated = false;
 bool target_updated = false;
-const int id = 0;
+const int id = 2;
 
 // the arena on the simulator stretches from (-X_MAX/2, -Y_MAX/2) to (X_MAX/2, Y_MAX/2) 
 const int X_MAX = 20;
