@@ -5,7 +5,6 @@ project(swarm_simulator)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
   roscpp
   std_msgs
   message_generation
@@ -85,7 +84,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES gazebo_simple
-   CATKIN_DEPENDS message_runtime gazebo_ros roscpp
+   CATKIN_DEPENDS message_runtime  roscpp
 #  DEPENDS system_lib
 )
 

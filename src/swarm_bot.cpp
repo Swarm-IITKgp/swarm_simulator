@@ -25,7 +25,7 @@ std::vector<swarm_simulator::obstacleData> obstacles; // global updated by callb
 bool new_obstacles = false;
 bool pos_updated = false;
 bool target_updated = false;
-const int id = 0;
+int id;
 
 // the arena on the simulator stretches from (-X_MAX/2, -Y_MAX/2) to (X_MAX/2, Y_MAX/2) 
 const int X_MAX = 20;
@@ -319,6 +319,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
   std::stringstream velTopic, odomTopic;
+  n.getParam("ID",id);
   odomTopic << "/swarmbot" << id << "/odom";
   velTopic << "/swarmbot" << id << "/cmd_vel";
 
@@ -330,11 +331,17 @@ int main(int argc, char **argv)
 
   Pose destination;
   Twist cmd_vel;
-
-  destination.position.y = destination.position.x = -10; //start position
-  destination.orientation.z = sin(M_PI/2);
-  destination.orientation.w = cos(M_PI/2);
-  destination.orientation.x = destination.orientation.y = destination.position.z = 0;  
+  while(ros::ok())
+  {
+    ros::spinOnce();
+    if(pos_updated)
+    	break;
+    loop_rate.sleep();
+   }
+  destination=current_pos; //start position
+  //destination.orientation.z = sin(M_PI/2);
+  //destination.orientation.w = cos(M_PI/2);
+  //destination.orientation.x = destination.orientation.y = destination.position.z = 0;  
 
   cmd_vel.linear.x = 0;
   cmd_vel.angular.z = cmd_vel.angular.y = cmd_vel.angular.x = cmd_vel.linear.y = cmd_vel.linear.z = 0;
@@ -378,10 +385,10 @@ int main(int argc, char **argv)
       if(current_y < 0) current_y = 0;
       if(current_x >= X_MAX * SCALE) current_x = X_MAX * SCALE - 1;
       if(current_y >= Y_MAX * SCALE) current_y = Y_MAX * SCALE - 1;
-
+	printMap();
       path = AStar(Point(current_x, current_y), Point(target_x, target_y));
 
-      printMap();
+      
 
       new_obstacles = false;
 
@@ -409,7 +416,6 @@ int main(int argc, char **argv)
       Point target = path.back();
       destination.position.x = (target.first / SCALE) - (X_MAX / 2);
       destination.position.y = (target.second / SCALE) - (Y_MAX / 2);
-
       std::cout << "simu_next_pos = " << destination.position.x << ", " << destination.position.y << std::endl;
       std::cout << "map_next_pos = " << target.first << ", " << target.second << std::endl;
 
@@ -420,6 +426,7 @@ int main(int argc, char **argv)
       //   destination.orientation.w = cos(angle/2);
       // }
     }
+    
   }
   else
   {
@@ -429,7 +436,7 @@ int main(int argc, char **argv)
   	vel_pub_0.publish(cmd_vel);
   	break;
   }
-
+	std::cout<<std::endl<<destination.position.x<<std::endl<<destination.position.y<<std::endl;
   calculate_u_omega(current_pos, destination, cmd_vel);
   vel_pub_0.publish(cmd_vel);
 
