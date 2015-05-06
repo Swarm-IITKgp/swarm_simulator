@@ -5,7 +5,6 @@ project(swarm_simulator)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  gazebo_ros
   roscpp
   std_msgs
   message_generation
@@ -17,6 +16,8 @@ find_package(catkin REQUIRED COMPONENTS
 find_package(catkin REQUIRED sensor_msgs cv_bridge roscpp std_msgs image_transport)
 find_package(Boost REQUIRED COMPONENTS system)
 include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
+
+set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -83,7 +84,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES gazebo_simple
-   CATKIN_DEPENDS message_runtime gazebo_ros roscpp
+   CATKIN_DEPENDS message_runtime  roscpp
 #  DEPENDS system_lib
 )
 

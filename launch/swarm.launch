@@ -7,14 +7,14 @@
   <group ns="swarmbot0">
     <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
       <arg name="robot_name" value="swarmbot0"/>
-      <arg name="init_pose" value="-x -12 -y -12 -z 0"/>
+      <arg name="init_pose" value="-x -10 -y -10 -z 0"/>
     </include>
   </group>
 
   <group ns="swarmbot1">
     <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
       <arg name="robot_name" value="swarmbot1"/>
-      <arg name="init_pose" value="-x -12.5 -y -12 -z 0"/>
+      <arg name="init_pose" value="-x 10 -y 10 -z 0"/>
     </include>
   </group>
 

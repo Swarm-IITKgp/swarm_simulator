@@ -1,0 +1,26 @@
+<launch>
+<group ns="swarmbot0">
+<param name="ID" value="0"/>
+<param name="NAME" value="swarmbot0"/>
+<node pkg="swarm_simulator" type="single_bot_node" name="swarmbot0" respawn="false" />
+</group>
+
+<group ns="swarmbot1">
+<param name="ID" value="1"/>
+<param name="NAME" value="swarmbot1"/>
+<node pkg="swarm_simulator" type="single_bot_node" name="swarmbot1" respawn="false" />
+</group>
+
+<group ns="swarmbot2">
+<param name="ID" value="2"/>
+<param name="NAME" value="swarmbot2"/>
+<node pkg="swarm_simulator" type="single_bot_node" name="swarmbot2" respawn="false" />
+</group>
+
+<group ns="swarmbot3">
+<param name="ID" value="3"/>
+<param name="NAME" value="swarmbot3"/>
+<node pkg="swarm_simulator" type="single_bot_node" name="swarmbot3" respawn="false" />
+</group>
+
+</launch>
