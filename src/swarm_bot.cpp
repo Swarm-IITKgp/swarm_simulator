@@ -202,14 +202,39 @@ inline double heuristic(Point a, Point b) {
 // returns whether a point is traversable
 inline bool passable(Point a) {
   if (a.first >= 0 && a.first < X_MAX * SCALE && a.second >= 0 && a.second < Y_MAX * SCALE) {
-    if (map[a.first][a.second] == 0) {
+    if (map[a.first][a.second] != 1) {
       return true;
     }
     else return false;
   }
   else return false;
 }
-
+Point nearest(Point p)
+{
+	if(passable(p))
+	{
+		return p;
+	}
+	double radius=1;
+	while(1)
+	{
+		for(int x=p.first-radius;x<=p.first+radius;x++)
+		{
+			for(int y=p.second-radius;y<=p.second+radius;y++)
+			{
+				if((x-p.first)*(x-p.first)+(y-p.second)*(y-p.second)<radius*radius)
+				{
+					if(passable(Point(x,y)))
+					{
+						return Point(x,y);
+					}
+				}
+			}
+		}
+		radius++;
+	}
+}
+		
 // Returns a vector of the valid neighbors of current
 std::vector<Point> neighborList
 (Point current) {
@@ -259,6 +284,8 @@ Point Comparator::destination = Point();
 std::map<Point, double> Comparator::cost = std::map<Point, double>();
 
 std::vector<Point> AStar(Point source, Point destination) {
+  source=nearest(source);
+  destination=nearest(destination);
   std::map<Point, Point> parent;
 
   std::map<Point, double>& cost = Comparator::cost;
@@ -274,11 +301,12 @@ std::vector<Point> AStar(Point source, Point destination) {
 
   while(!frontier.empty()) {
     Point current = frontier.top();
-    frontier.pop();
+    
 
     if (current == destination) {
       break;
     }
+    frontier.pop();
 
     std::vector<Point> neighbors = neighborList(current);
 
@@ -294,7 +322,11 @@ std::vector<Point> AStar(Point source, Point destination) {
       }
     }
   }
-
+  
+  if(frontier.empty()) {
+  	return std::vector<Point>();
+  }
+	
   //Reconstruct path from parent
   std::vector<Point> path;
   Point current = destination;
