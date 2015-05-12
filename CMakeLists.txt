@@ -18,6 +18,8 @@ find_package(catkin REQUIRED sensor_msgs cv_bridge roscpp std_msgs image_transpo
 find_package(Boost REQUIRED COMPONENTS system)
 include_directories(include ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
 
+set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
@@ -103,7 +105,7 @@ set(SWARM_SIMU
 )
 
 set(SINGLE_BOT
-	src/swarm_bot.cpp
+	src/astar.cpp
 )
 
 ## Declare a cpp executable
