@@ -7,33 +7,31 @@
 <group ns="swarmbot0">
 <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
 <arg name="robot_name" value="swarmbot0"/>
-<arg name="init_pose" value="-x -12.0 -y -12.0 -z 0"/>
+<arg name="init_pose" value="-x -10.0 -y -10.0 -z 0"/>
 </include>
 </group>
 
 <group ns="swarmbot1">
 <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
 <arg name="robot_name" value="swarmbot1"/>
-<arg name="init_pose" value="-x -11.5 -y -11.5 -z 0"/>
+<arg name="init_pose" value="-x 10.0 -y -10.0 -z 0"/>
 </include>
 </group>
 
 <group ns="swarmbot2">
 <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
 <arg name="robot_name" value="swarmbot2"/>
-<arg name="init_pose" value="-x -11.0 -y -11.0 -z 0"/>
+<arg name="init_pose" value="-x -10.0 -y 10.0 -z 0"/>
 </include>
 </group>
 
 <group ns="swarmbot3">
 <include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
 <arg name="robot_name" value="swarmbot3"/>
-<arg name="init_pose" value="-x -10.5 -y -10.5 -z 0"/>
+<arg name="init_pose" value="-x 10 -y 10.0 -z 0"/>
 </include>
 </group>
 
  
-<group ns="swarm_node">
-    <node pkg="swarm_simulator" type="swarm_simulator_node" name="swarm_simulator_node0"/>
-</group>
+
 </launch>
