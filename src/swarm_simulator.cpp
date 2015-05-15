@@ -71,6 +71,11 @@ int main(int argc, char **argv)
           toAdd.shape=2;
           msg.obstacles.push_back(toAdd);
         }
+        else if(s[i].find("swarmbot")!=std::string::npos){
+          toAdd.shape = s[i][s[i].size()-1]-'0';
+          toAdd.radius = 1.5;
+          msg.obstacles.push_back(toAdd);
+        }
       }
       i++;
     }   

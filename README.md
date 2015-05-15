@@ -27,6 +27,11 @@ To get started :
  $ roslaunch swarm_simulator swarm.launch
 ```
 
+-> To start publishing obstacleList :
+```sh
+ $ rosrun swarm_simulator swarm_simulator_node
+```
+
 To check the published obstacle list : <br />
 ```sh
  $ rostopic echo /obstacleList
