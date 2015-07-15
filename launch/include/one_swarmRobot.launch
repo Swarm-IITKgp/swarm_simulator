@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+    <arg name="robot_name"/>
+    <arg name="init_pose"/>
+    <!-- icreate robot model -->
+    <node name="create_model" args="$(arg init_pose) -file $(find swarm_simulator)/sdf/swarmRobot.sdf -sdf -model $(arg robot_name)" pkg="gazebo_ros" type="spawn_model"/>
+</launch>
