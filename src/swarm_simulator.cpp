@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "swarm_simulator_node");
 
 	ros::NodeHandle n;
-	ros::Publisher pub = n.advertise<swarm_simulator::obstacleList>("/obstacleList", 1);
+	ros::Publisher pub = n.advertise<swarm_simulator::obstacleList>("/obstacleList", 10);
 	ros::Subscriber sub = n.subscribe<gazebo_msgs::ModelStates>("/gazebo/model_states",10,ModelStateCallback);
                   
 	ros::Rate loop_rate(5);
