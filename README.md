@@ -22,14 +22,9 @@ To get started :
  $ bash scripts/generator.sh [number of agents]
 ```
 
--> To launch the world file :
+-> To launch the simulator :
 ```sh
  $ roslaunch swarm_simulator swarm.launch
-```
-
--> To start publishing obstacleList :
-```sh
- $ rosrun swarm_simulator swarm_simulator_node
 ```
 
 To check the published obstacle list : <br />
