@@ -22,7 +22,7 @@ def main( n):
         newbot+="""<group ns="""
         newbot+="\"" + str(botname) + "\""
         newbot+=""">\n"""
-        newbot+="""<include file="$(find swarm_simulator)/launch/one_swarmRobot.launch">
+        newbot+="""<include file="$(find swarm_simulator)/launch/include/one_swarmRobot.launch">
 """
         botID=i
         newbot+="""<arg name="robot_name" value="""
@@ -36,9 +36,7 @@ def main( n):
         newbot+="""</group>\n"""
     	print newbot
     print """ 
-        <group ns="swarm_node">
-        <node pkg="swarm_simulator" type="swarm_simulator_node" name="swarm_simulator_node" respawn="false" />
-        </group>"""
+    <node pkg="swarm_simulator" type="swarm_simulator_node" name="swarm_simulator_node" respawn="false" /> """
     print "</launch>"
 
 if __name__ == '__main__':
