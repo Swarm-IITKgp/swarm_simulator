@@ -29,8 +29,8 @@ def main( n):
         newbot+="\"" + str(botname) + "\""
         newbot+="""/>\n"""
         newbot+="""<arg name="init_pose" value="""
-        x = -12+0.5*i
-        y = -12+0.5*i
+        x = -10+0.5*i
+        y = -10+0.5*i
         newbot+="\"" + "-x " + str(x) + " -y " + str(y) + " -z 0" +"\"" + "/>\n"
         newbot+="</include>\n"
         newbot+="""</group>\n"""
