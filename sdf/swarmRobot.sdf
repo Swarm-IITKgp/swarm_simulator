@@ -1,43 +1,60 @@
-<?xml version="1.0" ?>
-<sdf version="1.4">
-  <model name="create">
-    <link name="base">
+<?xml version='1.0'?>
+<sdf version='1.5'>
+  <model name='swarm_robot'>
+    <link name='base'>
+      <pose>0 0 0 0 0 0</pose>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
       <inertial>
-        <pose>0.001453 -0.000453 0.029787 0 0 0</pose>
+        <mass>0.38441</mass>
+        <pose>0 0 0.024 0 0 0</pose>
         <inertia>
-          <ixx>0.058640</ixx>
-          <ixy>0.000124</ixy>
-          <ixz>0.000615</ixz>
-          <iyy>0.058786</iyy>
-          <iyz>0.000014</iyz>
-          <izz>1.532440</izz>
+          <ixx>0.000288</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0</iyy>
+          <iyz>0.000389</iyz>
+          <izz>0</izz>
         </inertia>
-        <mass>2.234000</mass>
       </inertial>
-
-      <collision name="base_collision">
-        <pose>0 0 0.047800 0 0 0</pose>
+      <visual name='base_visual'>
+        <pose>0 0 0.024 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://swarm_robot/meshes/swarmBot.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <shader type='pixel'>
+            <normal_map>__default__</normal_map>
+          </shader>
+          <ambient>0.792 0.892 0.933 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+        <cast_shadows>1</cast_shadows>
+        <transparency>0</transparency>
+      </visual>
+      <collision name='base_collision'>
+        <pose>0 0 0.024 0 -0 0</pose>
         <geometry>
           <cylinder>
-            <radius>0.016495</radius>
-            <length>0.061163</length>
+            <radius>0.043301</radius>
+            <length>0.060000</length>
           </cylinder>
         </geometry>
       </collision>
-      <visual name="base_visual">
-        <pose>0 0 0.047800 0 0 0</pose>
-        <geometry>
-          <mesh>
-            <uri>model://create/meshes/create_body.dae</uri>
-          </mesh>
-        </geometry>
-      </visual>
-
-      <collision name="front_wheel_collision">
-        <pose>0.130000 0 0.017000 0 1.570700 1.570700</pose>
+    <collision name="front_wheel_collision">
+        <pose>0.028000 0 0.006000 0 1.570700 1.570700</pose>
         <geometry>
           <sphere>
-            <radius>0.018000</radius>
+            <radius>0.012500</radius>
           </sphere>
         </geometry>
         <surface>
@@ -53,19 +70,19 @@
         </surface>
       </collision>
       <visual name="front_wheel_visual">
-        <pose>0.130000 0 0.017000 0 1.570700 1.570700</pose>
+        <pose>0.028000 0 0.006000 0 1.570700 1.570700</pose>
         <geometry>
           <sphere>
-            <radius>0.009000</radius>
+            <radius>0.012500</radius>
           </sphere>
         </geometry>
       </visual>
 
       <collision name="rear_wheel_collision">
-        <pose>-0.13 0 0.017 0 1.5707 1.5707</pose>
+        <pose>-0.028000 0 0.006000 0 1.5707 1.5707</pose>
         <geometry>
           <sphere>
-            <radius>0.015000</radius>
+            <radius>0.012500</radius>
           </sphere>
         </geometry>
         <surface>
@@ -81,17 +98,17 @@
         </surface>
       </collision>
       <visual name="rear_wheel_visual">
-        <pose>-0.130000 0 0.017000 0 1.570700 1.570700</pose>
+        <pose>-0.028000 0 0.006000 0 1.570700 1.570700</pose>
         <geometry>
           <sphere>
-            <radius>0.007500</radius>
+            <radius>0.012500</radius>
           </sphere>
         </geometry>
       </visual>
 
 
       <sensor name="left_cliff_sensor" type="ray">
-        <pose>0.070000 0.140000 0.027000 0 1.570790 0</pose>
+        <pose>0.018750 0.032475 0.024000 0 1.570790 0</pose>
         <ray>
           <scan>
             <horizontal>
@@ -110,7 +127,7 @@
       </sensor>
 
       <sensor name="leftfront_cliff_sensor" type="ray">
-        <pose>0.150000 0.040000 0.027000 0 1.570790 0</pose>
+        <pose>0.032475 0.018750 0.024000 0 1.570790 0</pose>
         <ray>
           <scan>
             <horizontal>
@@ -129,7 +146,7 @@
       </sensor>
 
       <sensor name="right_cliff_sensor" type="ray">
-        <pose>0.070000 -0.140000 0.027000 0 1.570790 0</pose>
+        <pose>0.018750 -0.032475 0.022000 0 1.570790 0</pose>
         <ray>
           <scan>
             <horizontal>
@@ -148,7 +165,7 @@
       </sensor>
 
       <sensor name="rightfront_cliff_sensor" type="ray">
-        <pose>0.150000 -0.040000 0.027000 0 1.570790 0</pose>
+        <pose>0.032475 -0.018750 0.022000 0 1.570790 0</pose>
         <ray>
           <scan>
             <horizontal>
@@ -167,7 +184,7 @@
       </sensor>
 
       <sensor name="wall_sensor" type="ray">
-        <pose>0.090000 -0.120000 0.059000 0 0 -1.000000</pose>
+        <pose>0.033000 -0.020000 0.079000 0 0 -1.000000</pose>
         <ray>
           <scan>
             <horizontal>
@@ -184,11 +201,50 @@
           </range>
         </ray>
       </sensor>
+
+      <sensor name="camera1" type="camera">
+        <pose>0.000000 0.000000 0.134000 0 0 0</pose>
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>320</width>
+            <height>240</height>
+          </image>
+          <clip>
+            <near>0.02</near>
+            <far>100</far>
+          </clip>
+          <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <cameraName>camera1</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+      </sensor>
     </link>
-
-
+ 
     <link name="left_wheel">
-      <pose>0 0.130000 0.032000 0 0 0</pose>
+      <pose>0 0.077000 0.034000 0 0 0</pose>
       <inertial>
         <inertia>
           <ixx>0.001000</ixx>
@@ -204,8 +260,8 @@
         <pose>0 0 0 0 1.570700 1.570700</pose>
         <geometry>
           <cylinder>
-            <radius>0.033000</radius>
-            <length>0.023000</length>
+            <radius>0.039500</radius>
+            <length>0.020000</length>
           </cylinder>
         </geometry>
         <surface>
@@ -224,15 +280,15 @@
         <pose>0 0 0 0 1.570700 1.570700</pose>
         <geometry>
           <cylinder>
-            <radius>0.033000</radius>
-            <length>0.023000</length>
+            <radius>0.039500</radius>
+            <length>0.020000</length>
           </cylinder>
         </geometry>
       </visual>
     </link>
 
     <link name="right_wheel">
-      <pose>0 -0.130000 0.032000 0 0 0</pose>
+      <pose>0 -0.077000 0.034000 0 0 0</pose>
       <inertial>
         <inertia>
           <ixx>0.001000</ixx>
@@ -248,8 +304,8 @@
         <pose>0 0 0 0 1.570700 1.570700</pose>
         <geometry>
           <cylinder>
-            <radius>0.033000</radius>
-            <length>0.023000</length>
+            <radius>0.039500</radius>
+            <length>0.020000</length>
           </cylinder>
         </geometry>
         <surface>
@@ -268,8 +324,8 @@
         <pose>0 0 0 0 1.570700 1.570700</pose>
         <geometry>
           <cylinder>
-            <radius>0.033000</radius>
-            <length>0.023000</length>
+            <radius>0.039500</radius>
+            <length>0.020000</length>
           </cylinder>
         </geometry>
       </visual>
@@ -280,6 +336,7 @@
       <child>left_wheel</child>
       <axis>
         <xyz>0 1 0</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
       </axis>
     </joint>
 
@@ -288,6 +345,7 @@
       <child>right_wheel</child>
       <axis>
         <xyz>0 1 0</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
       </axis>
     </joint>
 
@@ -296,14 +354,14 @@
       <updateRate>10</updateRate>
       <leftJoint>left_wheel</leftJoint>
       <rightJoint>right_wheel</rightJoint>
-      <wheelSeparation>0.5380</wheelSeparation>
-      <wheelDiameter>0.2410</wheelDiameter>
+      <wheelSeparation>0.154</wheelSeparation>
+      <wheelDiameter>0.079</wheelDiameter>
       <torque>20</torque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <robotBaseFrame>base_footprint</robotBaseFrame>
       </plugin>
+      
   </model>
- 
 </sdf>
